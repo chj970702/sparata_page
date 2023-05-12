@@ -60,15 +60,17 @@
             margin: 20px auto 20px auto;
 
         }
-        .mypost{
-            
+
+        .mypost {
+
             width: 500px;
             margin: 20px auto 20px auto;
             padding: 10px 10px 10px 10px;
 
             box-shadow: 0px 0px 3px 0px gray;
         }
-        .mybtn2{
+
+        .mybtn2 {
             /* 이 네줄은 함께 다님 */
             display: flex;
             flex-direction: row;
@@ -78,22 +80,29 @@
             margin-top: 20px;
 
         }
-        .mybtn2 > button {
+
+        .mybtn2>button {
             margin-right: 10px;
         }
     </style>
     <script>
-        function hey(){
+        function hey() {
             alert('아직 구현이 안됬어욤')
-            console.log('아직 구현이 안됬어욤')
         }
-        
+        $(document).ready(function () {
+            fetch("http://spartacodingclub.shop/sparta_api/weather/seoul").then(res => res.json()).then(data => {
+                console.log(data['temp'])
+                
+                $('#temp').text(data['temp'])
+            })
+        })
     </script>
 </head>
 
 <body>
     <div class="mydiv">
         <h1>최근에 관람한 4가지 영화</h1>
+        <div>현재 서울의 날씨 : <span id="temp"></span>도</div>
         <button class="mybtn" onclick="hey()">영화 기록하기</button>
     </div>
     <div class="mypost">
@@ -104,14 +113,14 @@
         <div class="input-group mb-3">
             <label class="input-group-text" for="inputGroupSelect01">별점</label>
             <select class="form-select" id="inputGroupSelect01">
-              <option selected>--선택하기--</option>
-              <option value="1">⭐</option>
-              <option value="2">⭐⭐</option>
-              <option value="3">⭐⭐⭐</option>
-              <option value="4">⭐⭐⭐⭐</option>
-              <option value="5">⭐⭐⭐⭐⭐</option>
+                <option selected>--선택하기--</option>
+                <option value="1">⭐</option>
+                <option value="2">⭐⭐</option>
+                <option value="3">⭐⭐⭐</option>
+                <option value="4">⭐⭐⭐⭐</option>
+                <option value="5">⭐⭐⭐⭐⭐</option>
             </select>
-          </div>
+        </div>
         <div class="form-floating">
             <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
             <label for="floatingTextarea">코멘트</label>
